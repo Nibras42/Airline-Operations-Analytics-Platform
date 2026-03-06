@@ -5,17 +5,15 @@ ORIGINAL_PATH = os.path.join("data_original", "T_T100D_SEGMENT_US_CARRIER_ONLY.c
 PROCESSED_DIR = "data_processed"
 PROCESSED_PATH = os.path.join(PROCESSED_DIR, "processed_data.csv")
 
-
-def load_raw_data(path: str):
+def load_raw_data(path):
     if not os.path.exists(path):
         raise FileNotFoundError(
             f"Raw data file not found at: {path}\n"
-            f"Make sure the CSV is in data_original/ and named correctly."
+            f"Make sure the CSV is in data_original and named correctly."
         )
     return pd.read_csv(path)
 
-
-def process_data(df: pd.DataFrame):
+def process_data(df):
     df.columns = [c.strip().upper() for c in df.columns]
 
     required_cols = [
@@ -37,8 +35,10 @@ def process_data(df: pd.DataFrame):
     for col in numeric_cols:
         df[col] = pd.to_numeric(df[col], errors="coerce")
 
-    df = df.dropna(subset=["YEAR", "MONTH", "ORIGIN", "DEST", "AIRCRAFT_TYPE",
-                           "DEPARTURES_PERFORMED", "SEATS", "PASSENGERS"])
+    df = df.dropna(subset=[
+        "YEAR", "MONTH", "ORIGIN", "DEST", "AIRCRAFT_TYPE",
+        "DEPARTURES_PERFORMED", "SEATS", "PASSENGERS"
+    ])
 
     df = df[(df["DEPARTURES_PERFORMED"] > 0) & (df["SEATS"] > 0)]
 
@@ -48,11 +48,9 @@ def process_data(df: pd.DataFrame):
 
     return df
 
-
-def save_processed_data(df: pd.DataFrame, path: str):
+def save_processed_data(df, path):
     os.makedirs(PROCESSED_DIR, exist_ok=True)
     df.to_csv(path, index=False)
-
 
 def main():
     df_raw = load_raw_data(ORIGINAL_PATH)
@@ -60,7 +58,6 @@ def main():
     save_processed_data(df_processed, PROCESSED_PATH)
     print(f"[wf_dataprocessing] Saved processed data to: {PROCESSED_PATH}")
     print(f"[wf_dataprocessing] Rows: {len(df_processed)}")
-
 
 if __name__ == "__main__":
     main()

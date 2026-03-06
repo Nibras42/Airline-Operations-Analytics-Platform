@@ -8,8 +8,7 @@ SUMMARY_PATH = os.path.join(PROCESSED_DIR, "summary.txt")
 CORR_PATH = os.path.join(PROCESSED_DIR, "correlations.txt")
 VIS_DIR = "visuals"
 
-
-def load_processed_data(path: str) -> pd.DataFrame:
+def load_processed_data(path):
     if not os.path.exists(path):
         raise FileNotFoundError(
             f"Processed data not found at: {path}\n"
@@ -17,8 +16,7 @@ def load_processed_data(path: str) -> pd.DataFrame:
         )
     return pd.read_csv(path)
 
-
-def write_summary_statistics(df: pd.DataFrame):
+def write_summary_statistics(df):
     quantitative = ["PASSENGERS", "SEATS", "DEPARTURES_PERFORMED", "LOAD_FACTOR"]
     qualitative = ["AIRCRAFT_TYPE"]
 
@@ -50,8 +48,7 @@ def write_summary_statistics(df: pd.DataFrame):
 
     print(f"[wf_visualization] Wrote summary to: {SUMMARY_PATH}")
 
-
-def write_correlations(df: pd.DataFrame):
+def write_correlations(df):
     cols = ["PASSENGERS", "SEATS", "DEPARTURES_PERFORMED", "LOAD_FACTOR"]
     corr = df[cols].corr(method="pearson")
 
@@ -61,8 +58,7 @@ def write_correlations(df: pd.DataFrame):
 
     print(f"[wf_visualization] Wrote correlations to: {CORR_PATH}")
 
-
-def make_plots(df: pd.DataFrame):
+def make_plots(df):
     os.makedirs(VIS_DIR, exist_ok=True)
 
     pairs = [
@@ -99,15 +95,12 @@ def make_plots(df: pd.DataFrame):
 
     print(f"[wf_visualization] Saved plots to: {VIS_DIR}/")
 
-
 def main():
     df = load_processed_data(PROCESSED_PATH)
     os.makedirs(PROCESSED_DIR, exist_ok=True)
-
     write_summary_statistics(df)
     write_correlations(df)
     make_plots(df)
-
 
 if __name__ == "__main__":
     main()
