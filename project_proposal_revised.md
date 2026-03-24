@@ -1,7 +1,7 @@
 #### SER541: Revised Project Proposal  
 #### Title: Aircraft Type and Capacity Allocation Patterns in U.S. Domestic Airline Routes  
 #### Author: Nibras Dsouza  
-#### Date: March 2026  
+#### Date: 22nd March 2026  
 
 **Keywords:** Airline operations, Load factor modeling, Aircraft capacity allocation  
 
