@@ -34,8 +34,8 @@ C = AIRCRAFT_TYPE
 ### Single Feature Hypotheses  
 
 **SEATS → LOAD_FACTOR:** Increasing seat capacity without proportional demand will decrease load factor due to overcapacity.  
-**DEPARTURES_PERFORMED → LOAD_FACTOR:** Increasing flight frequency on the same route will reduce load factor if demand is fixed, as passengers are distributed across more flights.  
-**AIRCRAFT_TYPE → LOAD_FACTOR:** Larger aircraft types may exhibit lower load factors on low-demand routes but higher efficiency on high-demand routes due to better capacity utilization.  
+**DEPARTURES_PERFORMED -> LOAD_FACTOR:** Increasing flight frequency on the same route will reduce load factor if demand is fixed, as passengers are distributed across more flights.  
+**AIRCRAFT_TYPE -> LOAD_FACTOR:** Larger aircraft types may exhibit lower load factors on low-demand routes but higher efficiency on high-demand routes due to better capacity utilization.  
 
 ### Pairwise Feature Hypotheses  
 
