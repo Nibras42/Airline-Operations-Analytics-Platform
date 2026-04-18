@@ -1,0 +1,8 @@
+MODEL EVALUATION SUMMARY
+
+Model                MSE                  R2                  
+Baseline             0.073267             0.065651            
+Main_Linear          0.048559             0.380746            
+Ridge                0.073267             0.065651            
+Lasso                0.053997             0.311393            
+KNN                  0.047077             0.399643            
