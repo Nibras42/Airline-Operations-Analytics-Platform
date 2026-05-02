@@ -13,6 +13,7 @@ Data Sourcing: The primary data source for this project is obtained from the Bur
 Dataset Source:
 https://www.transtats.bts.gov/
 Form 41 Traffic (T-100 Domestic Segment)
+
 Data Provenance:
 Dataset downloaded from BTS TranStats.
 File hash verified locally.
@@ -21,13 +22,13 @@ Background Knowledge: The background knowledge needed for this project will incl
 
 Related Work: Prior academic research has examined airline route networks, capacity allocation, and aircraft utilization to better understand airline operational and deployment strategies. Existing studies have shown that passenger demand characteristics influence decisions related to flight frequency, aircraft size selection, and network structure, highlighting tradeoffs between utilization efficiency and network coverage. Other work has analyzed how airlines configure their networks over time in response to demand concentration and operational constraints, demonstrating that aircraft deployment patterns are closely tied to observed route-level demand. This project builds on such research by focusing on route-level operational patterns within U.S. domestic airline networks using publicly available data, without relying on proprietary financial or optimization models.
 
-Pipeline Execution:
-Run wf_core.py to execute full workflow.
-
-papers.
+References:
 1. Wei, W., Sun, X., & Wu, J. (2014).
 Modeling airline passenger choice: Flight frequency, aircraft size, and network effects.
 Transportation Research Part E: Logistics and Transportation Review, 67, 10–22.
 2. Burghouwt, G., & de Wit, J. (2005).
 Temporal configurations of airline networks in Europe.
 Journal of Air Transport Management, 11(3), 185–198.
+
+Pipeline Execution:
+Run wf_core.py to execute full workflow.
