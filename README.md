@@ -3,6 +3,8 @@
 #### Anonymous
 #### Date: 26th Jan, 2026
 
+This project was cleared by the course staff (R. Acuna) for public release on 5/22/2026.
+
 Keywords: Airline operations, Route demand, Aircraft utilization
 
 Description: This project analyzes U.S. domestic airline operational data to examine how aircraft type and capacity allocation vary across routes with different demand levels. Using the U.S. Bureau of Transportation Statistics Form 41 Traffic dataset (T-100 Domestic Segment), the study focuses on non-stop domestic flight segments and evaluates relationships between passengers transported, available seats, departure frequency, and aircraft type at the route level. Capacity utilization measures, such as load factor, are used as proxies for route performance rather than direct financial profitability, which is not publicly observable. The analysis is restricted to U.S. domestic operations within a recent year to ensure feasibility and consistency, and aims to identify patterns in fleet deployment and capacity management across high-and low-demand routes using publicly available operational data.
