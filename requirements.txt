@@ -1,4 +1,10 @@
 pandas
+numpy
 matplotlib
 scikit-learn
-numpy
+pyarrow
+duckdb
+pyyaml
+fastapi
+uvicorn
+scikit-learn==1.5.2

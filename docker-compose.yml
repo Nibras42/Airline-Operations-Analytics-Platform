@@ -1,0 +1,9 @@
+services:
+  airline-route-api:
+    build: .
+    container_name: airline-route-intelligence-api
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./logs:/app/logs
+    restart: unless-stopped

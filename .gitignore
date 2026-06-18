@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# Virtual environments
+venv/
+portfolio_venv/
+.env/
+.venv/
+
+# Logs and runtime outputs
+logs/
+*.log
+
+# OS / editor files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Frontend/cache artifacts if any
+node_modules/
+dist/
+build/
+.vite/
