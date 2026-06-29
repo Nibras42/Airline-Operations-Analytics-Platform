@@ -1,4 +1,9 @@
-# Airline Route Intelligence Platform
+# Airline Operations Analytics Platform
+
+Date: 26th Jan, 2026
+This project was cleared by the course staff (R. Acuna) for public release on 5/22/2026.
+
+Keywords: Airline operations, Route demand, Aircraft utilization
 
 A data engineering and analytics platform for processing, warehousing, querying, and predicting U.S. domestic airline route utilization using BTS T-100 Domestic Segment data.
 
