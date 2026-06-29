@@ -1,0 +1,12 @@
+paths:
+  raw_csv: data_original/T_T100D_SEGMENT_US_CARRIER_ONLY.csv
+  processed_csv: data_processed/processed_data.csv
+  processed_parquet: data_processed/processed_data.parquet
+  warehouse_db: data_warehouse/airline_routes.duckdb
+  pipeline_log: logs/pipeline.log
+  data_quality_report: logs/data_quality_report.txt
+
+tables:
+  clean_routes: clean_routes
+  route_summary: route_summary
+  aircraft_summary: aircraft_summary
