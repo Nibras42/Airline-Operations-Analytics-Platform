@@ -3,54 +3,41 @@
 Date: 26th Jan, 2026
 This project was cleared by the course staff (R. Acuna) for public release on 5/22/2026.
 
-This project was cleared by the course staff (R. Acuna) for public release on 5/22/2026.
-
-Keywords: Airline operations, Route demand, Aircraft utilization
+Keywords: Airline operations, route demand, aircraft utilization, data engineering, analytics, load factor prediction
 
 A data engineering and analytics platform for processing, warehousing, querying, and predicting U.S. domestic airline route utilization using BTS T-100 Domestic Segment data.
 
 The system converts raw aviation operational data into analytics-ready Parquet files, loads curated tables into DuckDB, exposes route and aircraft intelligence through FastAPI endpoints, and provides ML-based load factor prediction using Scikit-learn.
 
-<<<<<<< HEAD
-Data Sourcing: The primary data source for this project is obtained from the Bureau of Transportation Statistics of the United States through the Department of Transportation's TranStats website. The data used for the analysis is the Form 41 Traffic dataset containing the T-100 Domestic Segment data, which contains operational data for U.S. carriers by route, including passenger data, available seats, number of departures made, aircraft types, carrier codes, and the time period. The data is obtained directly from the BTS website by selecting the data for U.S. domestic operations for the last year available. The data is then downloaded in CSV format for analysis. In order to better understand the data for the aircraft types variable, additional data is obtained from the BTS Aviation Support Tables to better understand the aircraft types by mapping the codes for aircraft types to the models of the aircraft. No datasets from Kaggle or any other sources are used for the project. In the absence of route profitability data, which is not publicly available, the load factor is used as a proxy for route profitability.
-Dataset Source:
-https://www.transtats.bts.gov/
-Form 41 Traffic (T-100 Domestic Segment)
-
-Data Provenance:
-Dataset downloaded from BTS TranStats.
-File hash verified locally.
-=======
 ---
->>>>>>> portfolio-data-engineering-upgrade
+
+## Data Source
+
+The dataset is obtained from the U.S. Bureau of Transportation Statistics through the Department of Transportation TranStats portal.
+
+Dataset source:
+https://www.transtats.bts.gov/
+
+Dataset used:
+Form 41 Traffic, T-100 Domestic Segment
+
+No Kaggle datasets are used.
+
+---
 
 ## Tech Stack
 
-<<<<<<< HEAD
-Related Work: Prior academic research has examined airline route networks, capacity allocation, and aircraft utilization to better understand airline operational and deployment strategies. Existing studies have shown that passenger demand characteristics influence decisions related to flight frequency, aircraft size selection, and network structure, highlighting tradeoffs between utilization efficiency and network coverage. Other work has analyzed how airlines configure their networks over time in response to demand concentration and operational constraints, demonstrating that aircraft deployment patterns are closely tied to observed route-level demand. This project builds on such research by focusing on route-level operational patterns within U.S. domestic airline networks using publicly available data, without relying on proprietary financial or optimization models.
-
-References:
-1. Wei, W., Sun, X., & Wu, J. (2014).
-Modeling airline passenger choice: Flight frequency, aircraft size, and network effects.
-Transportation Research Part E: Logistics and Transportation Review, 67, 10–22.
-2. Burghouwt, G., & de Wit, J. (2005).
-Temporal configurations of airline networks in Europe.
-Journal of Air Transport Management, 11(3), 185–198.
-
-Pipeline Execution:
-Run wf_core.py to execute full workflow.
-=======
-- Python
-- Pandas
-- NumPy
-- DuckDB
-- Parquet
-- FastAPI
-- Uvicorn
-- Scikit-learn
-- Matplotlib
-- Docker
-- Docker Compose
+* Python
+* Pandas
+* NumPy
+* DuckDB
+* Parquet
+* FastAPI
+* Uvicorn
+* Scikit-learn
+* Matplotlib
+* Docker
+* Docker Compose
 
 ---
 
@@ -78,26 +65,28 @@ Swagger/OpenAPI Documentation
 
 ## Key Features
 
-- End-to-end ETL pipeline for large-scale airline operational data
-- Data validation and data quality reporting
-- Parquet-based processed dataset generation
-- DuckDB warehouse with route-level and aircraft-level summary tables
-- Warehouse query layer for route and aircraft intelligence
-- FastAPI REST API with Swagger/OpenAPI documentation
-- KNN-based load factor prediction endpoint
-- Dockerized API deployment using Docker Compose
-- Model benchmarking using MSE and R² score
-- Route utilization, under-capacity, and aircraft utilization analytics
+* End-to-end ETL pipeline for large-scale airline operational data
+* Data validation and data quality reporting
+* Parquet-based processed dataset generation
+* DuckDB warehouse with route-level and aircraft-level summary tables
+* Warehouse query layer for route and aircraft intelligence
+* FastAPI REST API with Swagger/OpenAPI documentation
+* KNN-based load factor prediction endpoint
+* Dockerized API deployment using Docker Compose
+* Model benchmarking using MSE and R² score
+* Route utilization, under-capacity, and aircraft utilization analytics
 
 ---
 
 ## Dataset
 
-Source: U.S. Bureau of Transportation Statistics, T-100 Domestic Segment dataset.
-
 The dataset includes U.S. domestic carrier route operations with passenger counts, available seats, departures performed, aircraft type, carrier information, and route identifiers.
 
-No Kaggle datasets are used.
+Load factor is used as the primary utilization metric:
+
+```text
+LOAD_FACTOR = PASSENGERS / SEATS
+```
 
 ---
 
@@ -105,9 +94,9 @@ No Kaggle datasets are used.
 
 The ETL pipeline produces:
 
-- `data_processed/processed_data.parquet`
-- `data_warehouse/airline_routes.duckdb`
-- `logs/data_quality_report.txt`
+* `data_processed/processed_data.parquet`
+* `data_warehouse/airline_routes.duckdb`
+* `logs/data_quality_report.txt`
 
 Data quality report summary:
 
@@ -127,16 +116,16 @@ Rows with LOAD_FACTOR > 1.0: 41
 
 The DuckDB warehouse contains:
 
-- `clean_routes`
-- `route_summary`
-- `aircraft_summary`
+* `clean_routes`
+* `route_summary`
+* `aircraft_summary`
 
 Supported analytics:
 
-- Top utilized routes
-- Under-capacity routes
-- Aircraft utilization by type
-- Route lookup by airport pair
+* Top utilized routes
+* Under-capacity routes
+* Aircraft utilization by type
+* Route lookup by airport pair
 
 ---
 
@@ -275,9 +264,8 @@ requirements.txt
 
 ## Future Improvements
 
-- Add interactive dashboard for route analytics
-- Add orchestration with Prefect or Airflow
-- Add cloud deployment
-- Add route distance and seasonal demand features
-- Add data quality monitoring dashboard
->>>>>>> portfolio-data-engineering-upgrade
+* Add interactive dashboard for route analytics
+* Add orchestration with Prefect or Airflow
+* Add cloud deployment
+* Add route distance and seasonal demand features
+* Add data quality monitoring dashboard
