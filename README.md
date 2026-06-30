@@ -3,7 +3,7 @@
 Date: 26th Jan, 2026
 This project was cleared by the course staff (R. Acuna) for public release on 5/22/2026.
 
-Keywords: Airline operations, Route demand, Aircraft utilization
+Keywords: Airline operations, route demand, aircraft utilization, data engineering, analytics, load factor prediction
 
 A data engineering and analytics platform for processing, warehousing, querying, and predicting U.S. domestic airline route utilization using BTS T-100 Domestic Segment data.
 
@@ -11,19 +11,33 @@ The system converts raw aviation operational data into analytics-ready Parquet f
 
 ---
 
+## Data Source
+
+The dataset is obtained from the U.S. Bureau of Transportation Statistics through the Department of Transportation TranStats portal.
+
+Dataset source:
+https://www.transtats.bts.gov/
+
+Dataset used:
+Form 41 Traffic, T-100 Domestic Segment
+
+No Kaggle datasets are used.
+
+---
+
 ## Tech Stack
 
-- Python
-- Pandas
-- NumPy
-- DuckDB
-- Parquet
-- FastAPI
-- Uvicorn
-- Scikit-learn
-- Matplotlib
-- Docker
-- Docker Compose
+* Python
+* Pandas
+* NumPy
+* DuckDB
+* Parquet
+* FastAPI
+* Uvicorn
+* Scikit-learn
+* Matplotlib
+* Docker
+* Docker Compose
 
 ---
 
@@ -51,26 +65,28 @@ Swagger/OpenAPI Documentation
 
 ## Key Features
 
-- End-to-end ETL pipeline for large-scale airline operational data
-- Data validation and data quality reporting
-- Parquet-based processed dataset generation
-- DuckDB warehouse with route-level and aircraft-level summary tables
-- Warehouse query layer for route and aircraft intelligence
-- FastAPI REST API with Swagger/OpenAPI documentation
-- KNN-based load factor prediction endpoint
-- Dockerized API deployment using Docker Compose
-- Model benchmarking using MSE and R² score
-- Route utilization, under-capacity, and aircraft utilization analytics
+* End-to-end ETL pipeline for large-scale airline operational data
+* Data validation and data quality reporting
+* Parquet-based processed dataset generation
+* DuckDB warehouse with route-level and aircraft-level summary tables
+* Warehouse query layer for route and aircraft intelligence
+* FastAPI REST API with Swagger/OpenAPI documentation
+* KNN-based load factor prediction endpoint
+* Dockerized API deployment using Docker Compose
+* Model benchmarking using MSE and R² score
+* Route utilization, under-capacity, and aircraft utilization analytics
 
 ---
 
 ## Dataset
 
-Source: U.S. Bureau of Transportation Statistics, T-100 Domestic Segment dataset.
-
 The dataset includes U.S. domestic carrier route operations with passenger counts, available seats, departures performed, aircraft type, carrier information, and route identifiers.
 
-No Kaggle datasets are used.
+Load factor is used as the primary utilization metric:
+
+```text
+LOAD_FACTOR = PASSENGERS / SEATS
+```
 
 ---
 
@@ -78,9 +94,9 @@ No Kaggle datasets are used.
 
 The ETL pipeline produces:
 
-- `data_processed/processed_data.parquet`
-- `data_warehouse/airline_routes.duckdb`
-- `logs/data_quality_report.txt`
+* `data_processed/processed_data.parquet`
+* `data_warehouse/airline_routes.duckdb`
+* `logs/data_quality_report.txt`
 
 Data quality report summary:
 
@@ -100,16 +116,16 @@ Rows with LOAD_FACTOR > 1.0: 41
 
 The DuckDB warehouse contains:
 
-- `clean_routes`
-- `route_summary`
-- `aircraft_summary`
+* `clean_routes`
+* `route_summary`
+* `aircraft_summary`
 
 Supported analytics:
 
-- Top utilized routes
-- Under-capacity routes
-- Aircraft utilization by type
-- Route lookup by airport pair
+* Top utilized routes
+* Under-capacity routes
+* Aircraft utilization by type
+* Route lookup by airport pair
 
 ---
 
@@ -248,8 +264,40 @@ requirements.txt
 
 ## Future Improvements
 
-- Add interactive dashboard for route analytics
-- Add orchestration with Prefect or Airflow
-- Add cloud deployment
-- Add route distance and seasonal demand features
-- Add data quality monitoring dashboard
+* Add interactive dashboard for route analytics
+* Add orchestration with Prefect or Airflow
+* Add cloud deployment
+* Add route distance and seasonal demand features
+* Add data quality monitoring dashboard
+
+## Project Demo
+
+### ETL Pipeline
+
+The end-to-end ETL pipeline validates raw BTS T-100 data, generates analytics-ready Parquet datasets, builds the DuckDB warehouse, and produces data quality reports.
+
+![ETL Pipeline](docs/screenshots/01-etl-pipeline.png)
+
+---
+
+### Data Quality Reporting
+
+Automatic validation identifies duplicates, missing values, invalid operational records, and load factor anomalies before loading data into the warehouse.
+
+![Data Quality](docs/screenshots/02-data-quality-report.png)
+
+---
+
+### REST API Documentation
+
+FastAPI automatically generates interactive Swagger documentation for analytics and ML prediction endpoints.
+
+![Swagger API](docs/screenshots/03-api-documentation.png)
+
+---
+
+### Machine Learning Prediction
+
+The deployed KNN regression model predicts airline route load factor through a REST API.
+
+![Prediction API](docs/screenshots/04-ml-prediction-api.png)
