@@ -269,3 +269,35 @@ requirements.txt
 * Add cloud deployment
 * Add route distance and seasonal demand features
 * Add data quality monitoring dashboard
+
+## Project Demo
+
+### ETL Pipeline
+
+The end-to-end ETL pipeline validates raw BTS T-100 data, generates analytics-ready Parquet datasets, builds the DuckDB warehouse, and produces data quality reports.
+
+![ETL Pipeline](docs/screenshots/01-etl-pipeline.png)
+
+---
+
+### Data Quality Reporting
+
+Automatic validation identifies duplicates, missing values, invalid operational records, and load factor anomalies before loading data into the warehouse.
+
+![Data Quality](docs/screenshots/02-data-quality-report.png)
+
+---
+
+### REST API Documentation
+
+FastAPI automatically generates interactive Swagger documentation for analytics and ML prediction endpoints.
+
+![Swagger API](docs/screenshots/03-api-documentation.png)
+
+---
+
+### Machine Learning Prediction
+
+The deployed KNN regression model predicts airline route load factor through a REST API.
+
+![Prediction API](docs/screenshots/04-ml-prediction-api.png)
